@@ -8,3 +8,16 @@ services:
       - 8000:8000
     volumes:
       - ./app:/var/www/html
+
+  mysql:
+    container_name: mysql
+    build:
+      context: ./
+      dockerfile: Dockerfile_mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: example
