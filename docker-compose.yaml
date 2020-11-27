@@ -15,9 +15,20 @@ services:
       context: ./
       dockerfile: Dockerfile_mysql
     ports:
-      - 3306:3306
+      - 33060:3306
     volumes:
       - ./db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: masaru_do
       MYSQL_ROOT_PASSWORD: example
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8001:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=example
+      - UPLOAD_LIMIT=100000000
