@@ -28,7 +28,7 @@ services:
       - 8001:80
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=mysql
+      - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=example
       - UPLOAD_LIMIT=100000000
