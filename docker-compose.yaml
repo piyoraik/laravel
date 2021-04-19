@@ -11,15 +11,12 @@ services:
 
   mysql:
     container_name: mysql
-    build:
-      context: ./
-      dockerfile: Dockerfile_mysql
+    image: mariadb:10.5.4
     ports:
-      - 33060:3306
+      - 3306:3306
     volumes:
       - ./db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: masaru_do
       MYSQL_ROOT_PASSWORD: example
 
   phpmyadmin:
@@ -27,7 +24,7 @@ services:
     ports:
       - 8001:80
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_ARBITRARY=0
       - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=example
